@@ -12,7 +12,8 @@ const Addcontact = () => {
     const [firstName,setFirstName] =useState<string>(""); // defining the state of first name field in the form
     const [lastName,setLastName] =useState<string>(""); // defining the state of last name field in the form
     const [active,setActive] =useState<boolean|null>(); // defining the active state in the form
-    const handleFormSubmit=()=>{
+    const handleFormSubmit=(e:React.FormEvent)=>{
+        e.preventDefault(); 
         console.log(firstName,lastName,active)
         if(firstName && lastName && active!=null )  // checking for the valid input
         {
