@@ -1,0 +1,33 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding:20px;
+}
+.form p{
+    padding-bottom: 1rem;
+    align-self: center;
+}
+.form_body{
+    align-self: center;
+}
+input{
+    margin-bottom: 1rem;
+}
+.radio{
+    display: flex;
+    flex-direction: column;
+}
+.radio1{
+    display: flex;
+}
+.radio2{
+    display: flex;
+}
+#option1{
+margin-right: 2rem;
+}
+#option2{
+margin-right: 2rem;
+}

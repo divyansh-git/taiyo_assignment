@@ -1,0 +1,16 @@
+.selection{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px; /* Adjust the gap between grid items */
+    max-height: calc(2 * (200px + 20px) + 20px);
+    overflow-y: auto; /* Enable vertical scroll */
+}
+.contacts{
+    width:100%;
+    align-self: center;
+}

@@ -1,0 +1,17 @@
+#option1{
+    height:40%;
+    border:1px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+#option2{
+    height:40%;
+    border:1px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+/* .App-Sidebar{
+    height:100%;
+} */
