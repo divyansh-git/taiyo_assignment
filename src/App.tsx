@@ -16,7 +16,7 @@ const App = () => {
                 <Sidebar/>          {/*Sidebar component for choosing between map and contact page*/}
                 <div className="App">
                     <Routes>  
-                      <Route path="/contact" element={<ContactPage />}></Route> {/*Contact Component*/}
+                      <Route path="/" element={<ContactPage />}></Route> {/*Contact Component*/}
                       <Route path="/map" element={<MapPage />}></Route>   {/*Map Component*/}
                     </Routes>
                 </div>
