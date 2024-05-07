@@ -1,7 +1,7 @@
-import { FormEvent, useState } from "react"
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { updateBook } from "../../../Redux/ContactSlice";
-import { RootState, AppDispatch } from "../../../Redux/ReduxStore";
+import { useState } from "react"
+import { useDispatch } from "react-redux";
+import { updateContact } from "../../../Redux/ContactSlice";
+import { AppDispatch } from "../../../Redux/ReduxStore";
 import './EditContact.css'
 
 interface Mycomponentprops{
@@ -22,7 +22,7 @@ const Editcontact:React.FC<Mycomponentprops> = (props) => {
         console.log(firstName,lastName)
         if(firstName && lastName )
         {
-            dispatch(updateBook({ firstName, lastName, id: ids,active }));
+            dispatch(updateContact({ firstName, lastName, id: ids,active }));
         }
     }
 
@@ -34,11 +34,11 @@ const Editcontact:React.FC<Mycomponentprops> = (props) => {
             <input value={lastName} placeholder="Last Name" onChange={(e) => setLastName(e.currentTarget.value)}/>
             <div className="radio">
                 <div className="radio1">
-                    {act?<input defaultChecked id="option1" type="radio" value="Active" name="status" onChange={(e) => {setActive(true)}}/>:<input id="option1" type="radio" value="Active" name="status" onChange={() => {setActive(true)}}/>}
+                    {act?<input defaultChecked id="option1" type="radio" value="Active" name="status" onChange={() => {setActive(true)}}/>:<input id="option1" type="radio" value="Active" name="status" onChange={() => {setActive(true)}}/>}
                     <label htmlFor="option1" > Active </label>
                 </div>
                 <div className="radio2">
-                    {!act?<input defaultChecked id="option1" type="radio" value="Inactive" name="status" onChange={(e) => {setActive(false)}}/>:<input id="option1" type="radio" value="Inactive" name="status" onChange={() => {setActive(false)}}/>}
+                    {!act?<input defaultChecked id="option1" type="radio" value="Inactive" name="status" onChange={() => {setActive(false)}}/>:<input id="option1" type="radio" value="Inactive" name="status" onChange={() => {setActive(false)}}/>}
                     <label htmlFor="option2" > Inactive </label>
                 </div>
             </div>

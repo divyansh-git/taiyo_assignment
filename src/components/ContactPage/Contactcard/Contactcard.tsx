@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Contactcard.css"
 import Editcontact from "../EditContact/EditContact";
 
-interface Mycomponentprops{
+interface Mycomponentprops{  
     firstName:string;
     lastName:string;
     id:string;

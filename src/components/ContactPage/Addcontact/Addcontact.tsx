@@ -1,7 +1,7 @@
-import { FormEvent, useState } from "react"
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { addNewBook } from "../../../Redux/ContactSlice";
-import { RootState, AppDispatch } from "../../../Redux/ReduxStore";
+import { useState } from "react"
+import { useDispatch } from "react-redux";
+import { addNewContact } from "../../../Redux/ContactSlice";
+import { AppDispatch } from "../../../Redux/ReduxStore";
 import { v4 as uuidv4 } from 'uuid';
 import './Addcontact.css'
 
@@ -9,12 +9,12 @@ import './Addcontact.css'
 const Addcontact = () => {
     const useAppDispatch = () => useDispatch<AppDispatch>();
     const dispatch = useAppDispatch();
-    const [firstName,setFirstName] =useState<string>();
-    const [lastName,setLastName] =useState<string>();
-    const [active,setActive] =useState<boolean>();
+    const [firstName,setFirstName] =useState<string>(""); // defining the state of first name field in the form
+    const [lastName,setLastName] =useState<string>(""); // defining the state of last name field in the form
+    const [active,setActive] =useState<boolean|null>(); // defining the active state in the form
     const handleFormSubmit=()=>{
-        console.log(firstName,lastName)
-        if(firstName && lastName && active )
+        console.log(firstName,lastName,active)
+        if(firstName && lastName && active!=null )  // checking for the valid input
         {
             const userData = {
                 firstName,
@@ -29,11 +29,11 @@ const Addcontact = () => {
           "userData",
           JSON.stringify([...oldData, userData])
         );
-        dispatch(addNewBook(userData));
+        dispatch(addNewContact(userData));
         }
-        else if(firstName==null)
+        else if(firstName=="")
           alert("Please enter the first name");
-        else if(lastName ==null)
+        else if(lastName =="")
           alert("Please enter the last name");
         else if(active==null)
           alert("Please choose the contact status");

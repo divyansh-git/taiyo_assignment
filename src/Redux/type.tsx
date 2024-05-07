@@ -1,4 +1,4 @@
-export type BookState = {
+export type ContactState = {
     id: string;
     firstName:  string;
     lastName: string ;

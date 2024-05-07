@@ -1,42 +1,42 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./ReduxStore";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { BookState } from "./type";
+import { ContactState } from "./type";
 
 type initialStateType = {
-  bookList: BookState[];
+  contactList: ContactState[];
 };
-const bookList: BookState[] =
+const contactList: ContactState[] =
   JSON.parse(localStorage.getItem("userData") as string) ?? [];
 const initialState: initialStateType = {
-  bookList,
+  contactList,
 };
-export const bookSlice = createSlice({
+export const contactSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    addNewBook: (state, action: PayloadAction<BookState>) => {
-      state.bookList?.push(action.payload);
+    addNewContact: (state, action: PayloadAction<ContactState>) => {
+      state.contactList?.push(action.payload);
     },
-    updateBook: (state, action: PayloadAction<BookState>) => {
+    updateContact: (state, action: PayloadAction<ContactState>) => {
       const {
         payload: { firstName, id, lastName,active },
       } = action;
 
-      state.bookList = state.bookList.map((book) =>
-        book.id === id ? { ...book, firstName, lastName,active } : book
+      state.contactList = state.contactList.map((contact) =>
+        contact.id === id ? { ...contact, firstName, lastName,active } : contact
       );
-      localStorage.setItem("userData", JSON.stringify(state.bookList));
+      localStorage.setItem("userData", JSON.stringify(state.contactList));
     },
-    deleteBook: (state, action: PayloadAction<string>) => {
-      const newArr = state.bookList.filter(
-        (book) => book.id !== action.payload
+    deleteContact: (state, action: PayloadAction<string>) => {
+      const newArr = state.contactList.filter(
+        (contact) => contact.id !== action.payload
       );
        localStorage.setItem("userData", JSON.stringify(newArr));
-      state.bookList = newArr;
+      state.contactList = newArr;
     },
   },
 });
-export const { addNewBook, updateBook, deleteBook } = bookSlice.actions;
-export const selectBookList = (state: RootState) => state.book.bookList;
-export default bookSlice.reducer;
+export const { addNewContact, updateContact, deleteContact } = contactSlice.actions;
+export const selectcontactList = (state: RootState) => state.contact.contactList;
+export default contactSlice.reducer;
