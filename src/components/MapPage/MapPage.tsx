@@ -1,5 +1,7 @@
 import { MapContainer, TileLayer,Marker,Popup } from 'react-leaflet'
 import { useState } from 'react';
+import { Icon } from 'leaflet';
+import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import {
     QueryClient,
     QueryClientProvider,
@@ -64,7 +66,7 @@ const Map = () => {                         // map compnent function
     {               
         data?.map((val:any)=>{
             return(
-                <Marker key={val.countryInfo._id} position={[val.countryInfo.lat, val.countryInfo.long]}>
+                <Marker icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})} key={val.countryInfo._id} position={[val.countryInfo.lat, val.countryInfo.long]}>
                     <Popup>             {/*Setting the text inside popup*/}
                         <p>{`Country: ${val.country}`}</p>
                         <p>{`Active Cases: ${val.active}`}</p>

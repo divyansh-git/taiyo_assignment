@@ -11,7 +11,7 @@ const Addcontact = () => {
     const dispatch = useAppDispatch();
     const [firstName,setFirstName] =useState<string>(""); // defining the state of first name field in the form
     const [lastName,setLastName] =useState<string>(""); // defining the state of last name field in the form
-    const [active,setActive] =useState<boolean|null>(); // defining the active state in the form
+    const [active,setActive] =useState<boolean|null>(null); // defining the active state in the form
     const handleFormSubmit=(e:React.FormEvent)=>{
         e.preventDefault(); 
         console.log(firstName,lastName,active)
@@ -31,6 +31,9 @@ const Addcontact = () => {
           JSON.stringify([...oldData, userData])
         );
         dispatch(addNewContact(userData));
+        setFirstName("")
+        setLastName("")
+        alert("Contact Added")
         }
         else if(firstName=="")
           alert("Please enter the first name");
@@ -39,7 +42,15 @@ const Addcontact = () => {
         else if(active==null)
           alert("Please choose the contact status");
     }
-
+    const handleRadioChange = (newValue: boolean) => {
+      // Toggle the radio button state
+      if (active === newValue) {
+          // Clicked same value twice, uncheck
+          setActive(null);
+      } else {
+          setActive(newValue);
+      }
+  };
   return (
     <div className="form_body">
         <form className="form" onSubmit={handleFormSubmit}>
@@ -48,11 +59,11 @@ const Addcontact = () => {
             <input value={lastName} placeholder="Last Name" onChange={(e) => setLastName(e.currentTarget.value)}/>
             <div className="radio">
                 <div className="radio1">
-                    <input id="option1" type="radio" value="Active" name="status" onChange={() => {setActive(true)}}/>
+                    <input id="option1" type="radio" checked={active === true} value="Active" name="status" onChange={() => handleRadioChange(true)}/>
                     <label htmlFor="option1" > Active </label>
                 </div>
                 <div className="radio2">
-                    <input id="option1" type="radio" value="Inactive" name="status" onChange={() => {setActive(false)}}/>
+                    <input id="option1" type="radio" checked={active === false} value="Inactive" name="status" onChange={() => handleRadioChange(false)}/>
                     <label htmlFor="option2" > Inactive </label>
                 </div>
             </div>
